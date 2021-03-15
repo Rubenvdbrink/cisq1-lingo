@@ -64,7 +64,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!--Lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -72,9 +71,7 @@
             <version>1.18.14</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <!--PITest-->
@@ -124,7 +121,6 @@
                                 <exclude>**/trainer/presentation/**/*</exclude>
                                 <!--Excluded because dto's don't have any real functionality-->
                                 <exclude>**/trainer/data/**/*</exclude>
-
                             </excludes>
                         </configuration>
                     </execution>
@@ -152,9 +148,8 @@
                                         <limit>
                                             <counter>CLASS</counter>
                                             <value>MISSEDCOUNT</value>
-<!--                                            should be 0-->
+                                            <!--should be 0-->
                                             <maximum>3</maximum>
-                                            
                                         </limit>
                                     </limits>
                                 </rule>
