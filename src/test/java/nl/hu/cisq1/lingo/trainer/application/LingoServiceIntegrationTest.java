@@ -30,7 +30,7 @@ class LingoServiceIntegrationTest {
     @BeforeEach
     void initalize() {
         this.game = new LingoGame();
-        this.game.newRound("appel");
+        this.game.newRound("pizza");
         this.repository.save(game);
     }
 
@@ -44,13 +44,13 @@ class LingoServiceIntegrationTest {
     @Test
     @DisplayName("Making a correct guess")
     void makeCorrectGuess() {
-        this.lingoService.makeGuess("appel", this.game.getId());
-        assertEquals("appel", this.game.getAllRounds().get(0).getLastHint());
+        this.lingoService.makeGuess("pizza", this.game.getId());
+        assertEquals("pizza", this.game.getAllRounds().get(0).getLastHint());
     }
 
     @Test
     @DisplayName("Throw error when guess length is not the same as the word to guess length")
     void makeWrongLengthGuess() {
-        assertThrows(InvalidFeedbackException.class, () -> this.lingoService.makeGuess("monden", this.game.getId()));
+        assertThrows(InvalidFeedbackException.class, () -> this.lingoService.makeGuess("oranje", this.game.getId()));
     }
 }

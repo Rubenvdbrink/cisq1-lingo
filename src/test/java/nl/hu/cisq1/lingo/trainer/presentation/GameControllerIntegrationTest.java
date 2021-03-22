@@ -39,7 +39,7 @@ public class GameControllerIntegrationTest {
     @BeforeEach
     void initalize() {
         this.game = new LingoGame();
-        this.game.newRound("appel");
+        this.game.newRound("pizza");
         this.repository.save(game);
     }
 
@@ -58,7 +58,7 @@ public class GameControllerIntegrationTest {
     @DisplayName("Make a succesfull first guess")
     void makeSuccesfullGuess() throws Exception {
         GuessDTO dto = new GuessDTO();
-        dto.guess = "appel";
+        dto.guess = "pizza";
 
         RequestBuilder request = MockMvcRequestBuilders
                 .post("/lingo/guess?gameId=" + this.game.getId())
@@ -89,7 +89,7 @@ public class GameControllerIntegrationTest {
     @DisplayName("Make guess where game does not exist")
     void makeGuessGameNoExist() throws Exception {
         GuessDTO dto = new GuessDTO();
-        dto.guess = "appel";
+        dto.guess = "pizza";
 
         RequestBuilder request = MockMvcRequestBuilders
                 .post("/lingo/guess?gameId=" + 99999999)
@@ -104,7 +104,7 @@ public class GameControllerIntegrationTest {
     @DisplayName("Make guess but word is too long")
     void makeGuessGameWordTooLong() throws Exception {
         GuessDTO dto = new GuessDTO();
-        dto.guess = "keuter";
+        dto.guess = "oranje";
 
         RequestBuilder request = MockMvcRequestBuilders
                 .post("/lingo/guess?gameId=" + game.getId())
