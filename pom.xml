@@ -21,7 +21,7 @@
         <sonar.projectKey>Rubenvdbrink_cisq1-lingo</sonar.projectKey>
         <sonar.organization>rubenvdbrink</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.exclusions>**/LingoApplication.*, **/trainer/presentation/**/*, **/trainer/data/**/*</sonar.exclusions>
+        <sonar.exclusions>**/LingoApplication.*</sonar.exclusions>
     </properties>
 
     <dependencies>
@@ -107,8 +107,7 @@
                 </dependencies>
                 <configuration>
                     <!--minimum coverage pitest-->
-                    <!--should be 90-->
-                    <mutationThreshold>0</mutationThreshold>
+                    <mutationThreshold>85</mutationThreshold>
                     <timestampedReports>false</timestampedReports>
                 </configuration>
             </plugin>
@@ -169,7 +168,7 @@
                                             <counter>CLASS</counter>
                                             <value>MISSEDCOUNT</value>
                                             <!--should be 0-->
-                                            <maximum>3</maximum>
+                                            <maximum>0</maximum>
                                             
                                         </limit>
                                     </limits>
