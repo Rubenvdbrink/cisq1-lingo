@@ -107,8 +107,7 @@
                 </dependencies>
                 <configuration>
                     <!--minimum coverage pitest-->
-                    <!--should be 90-->
-                    <mutationThreshold>0</mutationThreshold>
+                    <mutationThreshold>85</mutationThreshold>
                     <timestampedReports>false</timestampedReports>
                 </configuration>
             </plugin>
@@ -135,9 +134,6 @@
                                 <exclude>**/LingoApplication.*</exclude>
                                 <exclude>**/trainer/domain/enums/**/*</exclude>
                                 <exclude>**/exception/**/*</exclude>
-
-                                <!--Excluded because controller testing was optional in assignment 5-->
-                                <exclude>**/trainer/presentation/**/*</exclude>
                                 <!--Excluded because dto's don't have any real functionality-->
                                 <exclude>**/trainer/data/**/*</exclude>
 
@@ -168,8 +164,7 @@
                                         <limit>
                                             <counter>CLASS</counter>
                                             <value>MISSEDCOUNT</value>
-                                            <!--should be 0-->
-                                            <maximum>3</maximum>
+                                            <maximum>0</maximum>
                                             
                                         </limit>
                                     </limits>
