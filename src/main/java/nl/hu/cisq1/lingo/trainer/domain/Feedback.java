@@ -1,6 +1,5 @@
 package nl.hu.cisq1.lingo.trainer.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,11 +28,16 @@ public class Feedback implements Serializable {
     private List<Mark> markPerLetter;
 
     public Feedback(String guess, List<Mark> markPerLetter) {
-        if(guess.length() != markPerLetter.size()) {
+        if (guess.length() != markPerLetter.size()) {
             throw new InvalidFeedbackException("⏺ ⏺ ⏺ ⏺ Length of the guess is not the same as the amount of marks ⏺ ⏺ ⏺ ⏺");
         }
         this.guess = guess;
         this.markPerLetter = markPerLetter;
+    }
+
+    public static String createFirstHint(String word) {
+        return word.charAt(0) +
+                ".".repeat(word.length() - 1);
     }
 
     //return true when all marks in markPerLetter are correct else false
@@ -46,22 +50,15 @@ public class Feedback implements Serializable {
     //else(absent) "." is appended
     public String giveHint(String lastHint) {
         StringBuilder hint = new StringBuilder();
-        for(int i = 0; i < this.guess.length(); i++) {
-            if(this.markPerLetter.get(i).equals(Mark.CORRECT))
+        for (int i = 0; i < this.guess.length(); i++) {
+            if (this.markPerLetter.get(i).equals(Mark.CORRECT))
                 hint.append(this.guess.charAt(i));
-            else if(lastHint.charAt(i) != '.') {
+            else if (lastHint.charAt(i) != '.') {
                 hint.append(lastHint.charAt(i));
-            }
-            else {
+            } else {
                 hint.append('.');
             }
         }
         return hint.toString();
-    }
-
-    @JsonIgnore
-    public static String createFirstHint(String word) {
-        return word.charAt(0) +
-                ".".repeat(word.length() - 1);
     }
 }
