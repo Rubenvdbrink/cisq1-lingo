@@ -1,9 +1,7 @@
 package nl.hu.cisq1.lingo.trainer.domain;
 
 import nl.hu.cisq1.lingo.trainer.domain.enums.Mark;
-import nl.hu.cisq1.lingo.trainer.exception.InvalidFeedbackException;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,22 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ConvertGuessToMarksTest {
-
-    @ParameterizedTest
-    @MethodSource("provideMarksExamples")
-    @DisplayName("Convert guess to marks succesfully")
-    void convertToMarksSuccesful(String wordToGuess, String guess, List<Mark> marks) {
-        assertEquals(marks, new ConvertGuessToMarks().converter(wordToGuess, guess));
-    }
-
-    @Test
-    @DisplayName("Throw InvalidFeedbackException when length of guess and wordToGuess is not the same")
-    void convertToMarksException() {
-        assertThrows(InvalidFeedbackException.class, () -> ConvertGuessToMarks.converter("banana", "book"));
-    }
 
     static Stream<Arguments> provideMarksExamples() {
         return Stream.of(
@@ -35,5 +20,12 @@ class ConvertGuessToMarksTest {
                 Arguments.of("banana", "ananab", List.of(Mark.PRESENT, Mark.PRESENT, Mark.PRESENT, Mark.PRESENT, Mark.PRESENT, Mark.PRESENT)),
                 Arguments.of("banana", "banned", List.of(Mark.CORRECT, Mark.CORRECT, Mark.CORRECT, Mark.PRESENT, Mark.ABSENT, Mark.ABSENT))
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideMarksExamples")
+    @DisplayName("Convert guess to marks succesfully")
+    void convertToMarksSuccesful(String wordToGuess, String guess, List<Mark> marks) {
+        assertEquals(marks, new ConvertGuessToMarks().converter(wordToGuess, guess));
     }
 }

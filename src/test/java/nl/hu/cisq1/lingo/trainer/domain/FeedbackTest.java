@@ -28,13 +28,6 @@ class FeedbackTest {
         assertFalse(feedback.isWordGuessed());
     }
 
-    @Test
-    @DisplayName("InvalidFeedbackException is thrown when the length of the guess and amount of marks is not the same")
-    void invalidFeedbackIsGiven() {
-        var marks = List.of(Mark.ABSENT);
-        assertThrows(InvalidFeedbackException.class, () -> new Feedback("woord", marks));
-    }
-
     @ParameterizedTest
     @MethodSource("provideHintExamples")
     @DisplayName("Give correct feedback")
