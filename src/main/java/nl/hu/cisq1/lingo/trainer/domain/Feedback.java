@@ -28,9 +28,6 @@ public class Feedback implements Serializable {
     private List<Mark> markPerLetter;
 
     public Feedback(String guess, List<Mark> markPerLetter) {
-        if (guess.length() != markPerLetter.size()) {
-            throw new InvalidFeedbackException("⏺ ⏺ ⏺ ⏺ Length of the guess is not the same as the amount of marks ⏺ ⏺ ⏺ ⏺");
-        }
         this.guess = guess;
         this.markPerLetter = markPerLetter;
     }

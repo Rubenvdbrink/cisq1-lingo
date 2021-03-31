@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import nl.hu.cisq1.lingo.trainer.domain.enums.RoundState;
 import nl.hu.cisq1.lingo.trainer.domain.enums.RoundType;
+import nl.hu.cisq1.lingo.trainer.exception.InvalidFeedbackException;
 import nl.hu.cisq1.lingo.trainer.exception.InvalidWordException;
 import nl.hu.cisq1.lingo.trainer.exception.RoundException;
 
@@ -58,9 +59,7 @@ public class Round implements Serializable {
         this.checkIfRoundIsLostOrWon();
         this.tries += 1;
 
-        if (Boolean.FALSE.equals(wordExists)) {
-            throw new InvalidWordException("⏺ ⏺ ⏺ ⏺ Word does not exist! ⏺ ⏺ ⏺ ⏺");
-        }
+        if (Boolean.FALSE.equals(wordExists)) throw new InvalidWordException("⏺ ⏺ ⏺ ⏺ Word does not exist! ⏺ ⏺ ⏺ ⏺");
 
         Feedback feedback = new Feedback(
                 guess,
