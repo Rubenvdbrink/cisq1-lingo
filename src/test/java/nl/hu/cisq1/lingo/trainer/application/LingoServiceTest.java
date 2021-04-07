@@ -35,7 +35,8 @@ class LingoServiceTest {
         GameRepository gameRepository = mock(GameRepository.class);
         LingoService lingoService = new LingoService(wordService, gameRepository);
 
-        assertThrows(GameNotFoundException.class, () -> lingoService.makeGuess("apple", anyLong()));
+        var id = anyLong();
+        assertThrows(GameNotFoundException.class, () -> lingoService.makeGuess("apple", id));
     }
 
     @Test
