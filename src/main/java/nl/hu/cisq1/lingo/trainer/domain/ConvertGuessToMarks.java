@@ -1,14 +1,17 @@
 package nl.hu.cisq1.lingo.trainer.domain;
 
+import lombok.NoArgsConstructor;
 import nl.hu.cisq1.lingo.trainer.domain.enums.Mark;
 import nl.hu.cisq1.lingo.trainer.exception.InvalidFeedbackException;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 public class ConvertGuessToMarks {
     public static List<Mark> converter(String wordToGuess, String guess) {
-        if (wordToGuess.length() != guess.length()) throw new InvalidFeedbackException("⏺ ⏺ ⏺ ⏺ Length is of the guess is not the same as the word to guess ⏺ ⏺ ⏺ ⏺");
+        if (wordToGuess.length() != guess.length())
+            throw new InvalidFeedbackException("⏺ ⏺ ⏺ ⏺ Length is of the guess is not the same as the word to guess ⏺ ⏺ ⏺ ⏺");
         List<Mark> allMarks = new ArrayList<>();
         List<Character> nonCorrectLetters = new ArrayList<>();
 

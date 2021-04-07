@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import nl.hu.cisq1.lingo.trainer.domain.enums.Mark;
-import nl.hu.cisq1.lingo.trainer.exception.InvalidFeedbackException;
 
 import javax.persistence.*;
 import java.io.Serializable;

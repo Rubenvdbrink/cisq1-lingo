@@ -51,6 +51,7 @@ class LingoServiceIntegrationTest {
     @Test
     @DisplayName("Throw error when guess length is not the same as the word to guess length")
     void makeWrongLengthGuess() {
-        assertThrows(InvalidFeedbackException.class, () -> this.lingoService.makeGuess("oranje", this.game.getId()));
+        var id = this.game.getId();
+        assertThrows(InvalidFeedbackException.class, () -> this.lingoService.makeGuess("oranje", id));
     }
 }
